@@ -1,0 +1,66 @@
+// Mayor y menor numero de una lista de elemento Diana Guevara 181864
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void ordenar(int n, int lista[]) // ordenamiento
+{
+    int i, j, temp = 0;
+    for (i=0; i<n-1; i++) 
+	{
+        for (j=0; j<n-i-1; j++) 
+		{
+            if (lista[j] > lista[j + 1]) 
+			{
+                temp = lista[j];
+                lista[j] = lista[j + 1];
+                lista[j + 1] = temp;
+            }
+        }
+    }
+}
+int main() 
+{
+    int i, j, n, mayor, menor;
+    printf("Numero de elementos a ordenar:\n");
+    scanf("%d", &n);
+    int lista[n];
+    srand(time(NULL));
+    for (i=0; i<n; i++) 
+	{
+        lista[i] = (rand() % 30) + 1;
+    }
+    printf ("\n");
+    printf("Lista sin ordenar:\n");
+    for (i=0; i<n; i++) 
+	{
+        printf("%d ", lista[i]);
+    }
+    printf ("\n");
+    ordenar(n, lista);
+    printf ("\n");
+    printf("Lista ordenada de menor a mayor:\n");
+    for (i=0; i<n; i++)  
+	{
+        printf("%d ", lista[i]);
+    }
+    printf ("\n");
+    menor = lista[0];
+    mayor= lista[0];
+    for (i=1; i<n; i++)
+	{
+        if (lista[i] < menor) 
+		{
+            menor = lista[i];
+        }
+        if (lista[i] > mayor) 
+		{
+            mayor = lista[i];
+        }
+    }
+    printf ("\n");
+    printf("Elemento menor: %d\n", menor);
+    printf ("\n");
+    printf("Elemento mayor: %d\n", mayor);
+    printf ("\n");}
+    return 0;
+}
